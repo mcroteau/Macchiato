@@ -11,6 +11,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -18,14 +19,11 @@ import java.sql.SQLException;
 
 public class AppStartup implements ServletContextListener {
 
-    Process dbStartup;
 
     @Override
     public void contextInitialized(ServletContextEvent servletContextEvent) {
         ParakeetFactory parakeetFactory = new ParakeetFactory();
         try {
-
-            dbStartup = Runtime.getRuntime().exec("java -jar exec/h2-1.4.200.jar -baseDir exec/");
 
             Connection conn = DbFactory.getConnection();
             ServletContext context = servletContextEvent.getServletContext();
@@ -41,9 +39,14 @@ public class AppStartup implements ServletContextListener {
     @Override
     public void contextDestroyed(ServletContextEvent servletContextEvent) {
         System.out.println("Shutting down!");
-        dbStartup.destroy();
-        File h2File = new File("exec/" + Constants.DATABASE);
-        h2File.delete();
+
+        try {
+            Connection conn = DbFactory.getConnection();
+            RunScript.execute(conn, new FileReader("exec/drop-db.sql"));
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
 }
