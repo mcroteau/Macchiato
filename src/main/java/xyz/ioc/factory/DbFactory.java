@@ -1,10 +1,6 @@
 package xyz.ioc.factory;
 
 import java.sql.Connection;
-<<<<<<< HEAD
-import java.sql.Driver;
-=======
->>>>>>> h2 added
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
