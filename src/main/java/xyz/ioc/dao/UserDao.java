@@ -2,8 +2,9 @@ package xyz.ioc.dao;
 
 public class UserDao {
 
-    public boolean save(){
-        return true;
+    public String getPassword(String username){
+        String sql = "select * from accounts where username = '" + username + "'";
+        return "";
     }
 
 }

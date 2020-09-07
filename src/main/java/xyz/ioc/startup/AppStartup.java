@@ -4,30 +4,25 @@ import io.github.mcroteau.Parakeet;
 import org.h2.tools.RunScript;
 import xyz.ioc.factory.DbFactory;
 import xyz.ioc.factory.ParakeetFactory;
-import xyz.ioc.ordinary.Constants;
-import xyz.ioc.ordinary.Utils;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 
 public class AppStartup implements ServletContextListener {
 
 
     @Override
     public void contextInitialized(ServletContextEvent servletContextEvent) {
-        ParakeetFactory parakeetFactory = new ParakeetFactory();
         try {
+
+            ParakeetFactory parakeetFactory = new ParakeetFactory();
+            Parakeet parakeet = parakeetFactory.getParakeet();
 
             Connection conn = DbFactory.getConnection();
             ServletContext context = servletContextEvent.getServletContext();
-            System.out.println("Starting up!" + conn);
 
             RunScript.execute(conn, new FileReader("exec/create-db.sql"));
 

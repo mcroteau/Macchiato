@@ -30,3 +30,10 @@ create table posts (
 
 insert into accounts values (1, 'owner', 'owner@mail.co', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8');
 insert into accounts values (2, 'barista', 'barista@mail.co', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8');
+
+insert into roles values (1, 'ROLE_OWNER');
+insert into roles values (2, 'ROLE_BARISTA');
+
+insert into account_roles(1, 1);
+insert into account_roles(2, 2);
+
