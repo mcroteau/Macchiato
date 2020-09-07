@@ -2,7 +2,7 @@ create table account (
 	id bigint PRIMARY KEY AUTO_INCREMENT,
 	name character varying(55),
 	username character varying(55) NOT NULL,
-	password character varying(155) NOT NULL,
+	password character varying(155) NOT NULL
 );
 
 create table role (
@@ -27,3 +27,7 @@ create table posts (
 	title character varying(172),
 	date_posted bigint NOT NULL
 );
+
+INSERT INTO table_name (id, name, username, password)
+VALUES (1, "owner", "owner@mail.co", "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8")
+VALUES (2, "owner", "barista@mail.co", "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8");
