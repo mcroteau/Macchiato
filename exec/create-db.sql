@@ -23,9 +23,9 @@ create table account_permissions (
 create table posts (
 	id bigint PRIMARY KEY AUTO_INCREMENT,
 	account_id bigint NOT NULL REFERENCES accounts(id),
-	content text,
 	title character varying(172),
-	date_posted bigint NOT NULL
+	content text,
+	date_created bigint NOT NULL
 );
 
 insert into accounts values (1, 'owner', 'owner@mail.co', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8');
