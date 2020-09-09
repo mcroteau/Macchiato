@@ -1,7 +1,7 @@
 package xyz.ioc.access;
 
 import io.github.mcroteau.resources.access.Accessor;
-import xyz.ioc.data.UserDao;
+import xyz.ioc.dao.UserDao;
 
 import java.util.Set;
 

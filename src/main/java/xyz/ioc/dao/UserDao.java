@@ -1,4 +1,4 @@
-package xyz.ioc.data;
+package xyz.ioc.dao;
 
 import xyz.ioc.factory.DbFactory;
 import xyz.ioc.model.User;
