@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<decorators defaultdir="/jsp/layouts">
+    <decorator name="loggedin" page="loggined.jsp">
+        <pattern>*/create</pattern>
+    </decorator>
+    <decorator name="guest" page="guest.jsp">
+        <pattern>*/posts</pattern>
+        <pattern>*/signin</pattern>
+    </decorator>
+</decorators>
