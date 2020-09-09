@@ -1,4 +1,4 @@
-package xyz.ioc.dao;
+package xyz.ioc.data;
 
 public class BlogDao {
 

@@ -1,4 +1,4 @@
-package xyz.ioc.dao;
+package xyz.ioc.data;
 
 import xyz.ioc.factory.DbFactory;
 import xyz.ioc.model.User;
@@ -62,10 +62,27 @@ public class UserDao {
                 String role = rs.getString("name");
                 roles.add(role);
             }
+            return roles;
         }catch(Exception e){
             e.printStackTrace();
         }
         return null;
     }
 
+    public Set<String> getUserPermissions(String username){
+        try {
+            User user = getUser(username);
+            Statement stmt = connection.createStatement();
+            ResultSet rs = stmt.executeQuery("select permission from account_permissions where account_id = " + user.getId());
+            Set permissions = new HashSet();
+            while(rs.next()){
+                String permission = rs.getString("permission");
+                permissions.add(permission);
+            }
+            return permissions;
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

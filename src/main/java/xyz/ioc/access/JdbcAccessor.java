@@ -1,25 +1,30 @@
 package xyz.ioc.access;
 
 import io.github.mcroteau.resources.access.Accessor;
+import xyz.ioc.data.UserDao;
 
-import java.sql.Statement;
 import java.util.Set;
 
 public class JdbcAccessor implements Accessor {
 
+    UserDao userDao;
+
+    public JdbcAccessor(){
+        this.userDao = new UserDao();
+    }
+
     @Override
     public String getPassword(String username) {
-        return null;
+        return userDao.getPassword(username);
     }
 
     @Override
     public Set<String> getRoles(String username) {
-
-        return null;
+        return userDao.getUserRoles(username);
     }
 
     @Override
     public Set<String> getPermissions(String username) {
-        return null;
+        return userDao.getUserPermissions(username);
     }
 }
