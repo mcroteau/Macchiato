@@ -11,5 +11,7 @@ public class Constants {
     public static final String PARAKEET_LOOKUP  = "Parakeet";
     public static final String USER_DAO_LOOKUP  = "UserDao";
     public static final String POSTS_DAO_LOOKUP = "PostsDao";
+    public static final String DATE_FORMAT  = "yyyyMMddHHmmssSSS";
+
 
 }

@@ -5,8 +5,9 @@ public class Post {
     public long id;
     public String title;
     public String content;
-    public long dateCreated;
     public long userId;
+    public long dateCreated;
+    public String date;
 
     public long getId() {
         return id;
@@ -28,6 +29,14 @@ public class Post {
         return content;
     }
 
+    public long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(long userId) {
+        this.userId = userId;
+    }
+
     public void setContent(String content) {
         this.content = content;
     }
@@ -40,12 +49,12 @@ public class Post {
         this.dateCreated = dateCreated;
     }
 
-    public long getUserId() {
-        return userId;
+    public String getDate() {
+        return date;
     }
 
-    public void setUserId(long userId) {
-        this.userId = userId;
+    public void setDate(String date) {
+        this.date = date;
     }
 
 }

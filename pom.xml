@@ -76,7 +76,7 @@
 
                 <configuration>
                     <webApp>
-                        <contextPath>/macchiatto</contextPath>
+                        <contextPath>/macchiato</contextPath>
                     </webApp>
                 </configuration>
             </plugin>

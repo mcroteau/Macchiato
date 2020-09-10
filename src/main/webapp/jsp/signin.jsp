@@ -7,15 +7,15 @@
 
 <h1>Signin</h1>
 
-<form action="/b/auth" method="post">
+<form action="/${pageContext.request.contextPath}/auth" method="post">
 
     <label>Username</label>
-    <input type="text" name="username" placeholder="Username" value="mockyah"/>
+    <input type="text" name="username" placeholder="Username"/>
 
     <br/>
 
     <label>Password</label>
-    <input type="text" name="password" placeholder="Password ***" value="birdyah"/>
+    <input type="text" name="password" placeholder="Password ***"/>
 
     <br/>
     <br/>

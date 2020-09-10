@@ -4,7 +4,7 @@
         <pattern>*/create</pattern>
     </decorator>
     <decorator name="guest" page="guest.jsp">
-        <pattern>*/posts</pattern>
+        <pattern>*/</pattern>
         <pattern>*/signin</pattern>
     </decorator>
 </decorators>
