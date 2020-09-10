@@ -48,7 +48,7 @@ public class Utils {
         return null;
     }
 
-    public static long getDateTime() {
+    public static long getDate() {
         Calendar cal = Calendar.getInstance();
         long date = getDateFormatted(cal);
         return date;

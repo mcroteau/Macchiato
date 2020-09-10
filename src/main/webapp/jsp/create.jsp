@@ -8,10 +8,14 @@
 <body>
 <h1>Create Post</h1>
 
+<c:if test="${not empty message}">
+    <p><c:out value="${message}"/></p>
+</c:if>
+
 <form action="${pageContext.request.contextPath}/save" method="post">
 
     <label>Title</label>
-    <input type="text" name="username" placeholder="Username"/>
+    <input type="text" name="username" placeholder="title"/>
 
     <br/>
 
@@ -21,7 +25,7 @@
     <br/>
     <br/>
 
-    <input type="submit" value="Signin"/>
+    <input type="submit" value="Save"/>
 </form>
 
 </body>

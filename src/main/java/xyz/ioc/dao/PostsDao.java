@@ -20,12 +20,13 @@ public class PostsDao {
 
     public boolean save(Post post){
         try {
-            String sql = "insert into posts values ( null, ?, ?, ? );";
+            String sql = "insert into posts values ( null, ?, ?, ?, ? );";
 
             PreparedStatement stmt = connection.prepareStatement(sql);
-            stmt.setString(1, post.getTitle());
-            stmt.setString(2, post.getContent());
-            stmt.setLong(3, post.getDateCreated());
+            stmt.setLong(1, post.getUserId());
+            stmt.setString(2, post.getTitle());
+            stmt.setString(3, post.getContent());
+            stmt.setLong(4, post.getDateCreated());
 
             ResultSet rs = stmt.executeQuery(sql);
             int result = stmt.executeUpdate();

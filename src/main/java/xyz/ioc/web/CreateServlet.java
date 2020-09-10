@@ -21,8 +21,7 @@ public class CreateServlet extends HttpServlet {
         if(parakeet.isAuthenticated()){
             req.getRequestDispatcher("/jsp/create.jsp").forward(req, resp);
         }else{
-            req.setAttribute("message", "You must be signed in before continuing...");
-            req.getRequestDispatcher("/jsp/signin.jsp").forward(req, resp);
+            resp.sendRedirect(context.getContextPath() + "/signin");
         }
     }
 }

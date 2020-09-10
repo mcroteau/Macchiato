@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="parakeet" uri="/META-INF/tags/parakeet.tld"%>
 <%@ taglib uri="http://www.opensymphony.com/sitemesh/decorator" prefix="decorator" %>
+<%@ taglib prefix="parakeet" uri="/META-INF/tags/parakeet.tld"%>
 
 <html>
 <head>

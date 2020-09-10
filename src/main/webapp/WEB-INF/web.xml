@@ -25,6 +25,16 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>SaveServlet</servlet-name>
+        <servlet-class>xyz.ioc.web.SaveServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>SaveServlet</servlet-name>
+        <url-pattern>/save</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>SigninServlet</servlet-name>
         <servlet-class>xyz.ioc.web.SigninServlet</servlet-class>
     </servlet>
