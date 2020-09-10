@@ -14,6 +14,36 @@
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>CreateServlet</servlet-name>
+        <servlet-class>xyz.ioc.web.CreateServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>CreateServlet</servlet-name>
+        <url-pattern>/create</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SigninServlet</servlet-name>
+        <servlet-class>xyz.ioc.web.SigninServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>SigninServlet</servlet-name>
+        <url-pattern>/signin</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AuthServlet</servlet-name>
+        <servlet-class>xyz.ioc.web.AuthServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AuthServlet</servlet-name>
+        <url-pattern>/auth</url-pattern>
+    </servlet-mapping>
+
     <filter>
         <filter-name>Parakeet</filter-name>
         <filter-class>io.github.mcroteau.resources.filters.CacheFilter</filter-class>

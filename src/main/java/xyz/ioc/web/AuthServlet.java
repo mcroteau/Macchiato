@@ -15,8 +15,6 @@ public class AuthServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doPost(req, resp);
-
         ServletContext context = req.getServletContext();
         Parakeet parakeet = (Parakeet) context.getAttribute(Constants.PARAKEET_LOOKUP);
 
@@ -24,8 +22,7 @@ public class AuthServlet extends HttpServlet {
         String password = req.getParameter("password");
 
         if(parakeet.login(username, password)){
-            req.setAttribute("message", "Successfully signed in!");
-            req.getRequestDispatcher("/jsp/posts.jsp");
+            resp.sendRedirect(req.getContextPath() + "/");
         }else{
             req.setAttribute("message", "Username and password are incorrect! Please try again!");
             req.getRequestDispatcher("/jsp/signin.jsp");

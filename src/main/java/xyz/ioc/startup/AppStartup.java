@@ -2,6 +2,7 @@ package xyz.ioc.startup;
 
 import io.github.mcroteau.Parakeet;
 import org.h2.tools.RunScript;
+import xyz.ioc.dao.PostsDao;
 import xyz.ioc.factory.DbFactory;
 import xyz.ioc.factory.ParakeetFactory;
 import xyz.ioc.ordinary.Constants;
@@ -19,12 +20,15 @@ public class AppStartup implements ServletContextListener {
         try {
 
             System.out.println("Starting up!");
+            PostsDao postDao = new PostsDao();
+
             ParakeetFactory parakeetFactory = new ParakeetFactory();
             Parakeet parakeet = parakeetFactory.getParakeet();
 
             Connection conn = DbFactory.getConnection();
             ServletContext context = servletContextEvent.getServletContext();
             context.setAttribute(Constants.PARAKEET_LOOKUP, parakeet);
+            context.setAttribute(Constants.POSTS_DAO_LOOKUP, postDao);
 
             RunScript.execute(conn, new FileReader("exec/create-db.sql"));
 

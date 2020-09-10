@@ -17,7 +17,6 @@
         <parakeet:username/> | <a href="${pageContext.request.contextPath}/logout">Logout</a>
     </parakeet:isAuthenticated>
 
-
     <decorator:body />
 
 </body>

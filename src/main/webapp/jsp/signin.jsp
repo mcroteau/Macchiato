@@ -7,7 +7,7 @@
 
 <h1>Signin</h1>
 
-<form action="/${pageContext.request.contextPath}/auth" method="post">
+<form action="${pageContext.request.contextPath}/auth" method="post">
 
     <label>Username</label>
     <input type="text" name="username" placeholder="Username"/>
