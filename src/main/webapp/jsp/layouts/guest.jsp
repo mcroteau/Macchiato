@@ -14,7 +14,8 @@
     </parakeet:anonymous>
 
     <parakeet:isAuthenticated>
-        <parakeet:username/> | <a href="${pageContext.request.contextPath}/logout">Logout</a>
+        <parakeet:username/> | <a href="${pageContext.request.contextPath}/logout">Logout</a> |
+        <a href="${pageContext.request.contextPath}/create">Create</a>
     </parakeet:isAuthenticated>
 
     <decorator:body />

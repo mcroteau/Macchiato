@@ -2,7 +2,6 @@ package xyz.ioc.dao;
 
 import xyz.ioc.factory.DbFactory;
 import xyz.ioc.model.Post;
-import xyz.ioc.model.User;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -18,7 +17,25 @@ public class PostsDao {
         connection = DbFactory.getConnection();
     }
 
-    public boolean save(Post post){
+    public Post getLastInserted(){
+        try {
+            String sql = "select * from posts limit 1 order by date_created desc";
+            Statement stmt = connection.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+
+            if(rs.next()){
+                Post post = extractResultSetPost(rs);
+                return post;
+            }
+
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
+
+        return null;
+    }
+
+    public Post save(Post post){
         try {
             String sql = "insert into posts values ( null, ?, ?, ?, ? );";
 
@@ -28,14 +45,17 @@ public class PostsDao {
             stmt.setString(3, post.getContent());
             stmt.setLong(4, post.getDateCreated());
 
-            ResultSet rs = stmt.executeQuery(sql);
             int result = stmt.executeUpdate();
-            if(result == 1) return true;
+            if(result == 1) {
+                Post savedPost = getLastInserted();
+                return savedPost;
+            }
 
         }catch(Exception ex){
             ex.printStackTrace();
         }
-        return false;
+
+        return null;
     }
 
     public List<Post> getPosts(String username){
@@ -46,11 +66,7 @@ public class PostsDao {
 
             List<Post> posts = new ArrayList<Post>();
             while(rs.next()){
-                Post post = new Post();
-                post.setId(rs.getLong("id"));
-                post.setTitle(rs.getString("title"));
-                post.setContent(rs.getString("content"));
-                post.setDateCreated(rs.getLong("date_created"));
+                Post post = extractResultSetPost(rs);
                 posts.add(post);
             }
 
@@ -61,4 +77,15 @@ public class PostsDao {
         }
         return null;
     }
+
+
+    private Post extractResultSetPost(ResultSet rs) throws Exception{
+        Post post = new Post();
+        post.setId(rs.getLong("id"));
+        post.setTitle(rs.getString("title"));
+        post.setContent(rs.getString("content"));
+        post.setDateCreated(rs.getLong("date_created"));
+        return post;
+    }
+
 }

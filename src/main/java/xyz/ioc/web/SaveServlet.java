@@ -27,15 +27,17 @@ public class SaveServlet extends HttpServlet {
         if(parakeet.isAuthenticated()){
             User user = userDao.getUser(parakeet.getUser());
             Post post = new Post();
-            String title = (String) req.getAttribute("title");
-            String content = (String) req.getAttribute("content");
+            String title = req.getParameter("title");
+            String content = req.getParameter("content");
 
             post.setTitle(title);
             post.setContent(content);
             post.setDateCreated(Utils.getDate());
             post.setUserId(user.getId());
 
-            postsDao.save(post);
+            Post savedPost = postsDao.save(post);
+            String permission = Constants.POST_PREFIX + savedPost.getId();
+            userDao.saveUserPermission(permission, user.getId());
 
             req.setAttribute("message", "Successfully saved post!");
             req.getRequestDispatcher("/jsp/create.jsp").forward(req, resp);

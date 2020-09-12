@@ -13,5 +13,7 @@ public class Constants {
     public static final String POSTS_DAO_LOOKUP = "PostsDao";
     public static final String DATE_FORMAT  = "yyyyMMddHHmmssSSS";
 
+    public static final String POST_PREFIX = "post:maintenance:";
+
 
 }

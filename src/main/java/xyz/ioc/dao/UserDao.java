@@ -4,6 +4,7 @@ import xyz.ioc.factory.DbFactory;
 import xyz.ioc.model.User;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.HashSet;
@@ -84,5 +85,23 @@ public class UserDao {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public boolean saveUserPermission(String permission, long id){
+        try {
+            String sql = "insert into user_permissions values ( ?, ? );";
+
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setLong(1, id);
+            stmt.setString(2, permission);
+
+            int result = stmt.executeUpdate();
+            if (result == 1) return true;
+
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
+
+        return false;
     }
 }

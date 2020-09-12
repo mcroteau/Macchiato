@@ -15,7 +15,7 @@
 <form action="${pageContext.request.contextPath}/save" method="post">
 
     <label>Title</label>
-    <input type="text" name="username" placeholder="title"/>
+    <input type="text" name="title" placeholder="title"/>
 
     <br/>
 
