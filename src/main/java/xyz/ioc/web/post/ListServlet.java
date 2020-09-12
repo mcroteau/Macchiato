@@ -32,12 +32,12 @@ public class ListServlet extends HttpServlet {
         PostDao postDao = (PostDao) context.getAttribute(Constants.POSTS_DAO_LOOKUP);
 
         if(parakeet.isAuthenticated()) {
-            List<Post> posts = postDao.getPosts(parakeet.getUser());
+            List<Post> posts = postDao.getList();
             for (Post post : posts) {
                 post.setDate(Utils.getDate(post.getDateCreated()));
             }
             req.setAttribute("posts", posts);
         }
-        req.getRequestDispatcher("/jsp/list.jsp").forward(req, resp);
+        req.getRequestDispatcher("/jsp/post/list.jsp").forward(req, resp);
     }
 }

@@ -40,7 +40,7 @@ public class SaveServlet extends HttpServlet {
             userDao.saveUserPermission(permission, user.getId());
 
             req.setAttribute("message", "Successfully saved post!");
-            req.getRequestDispatcher("/jsp/create.jsp").forward(req, resp);
+            req.getRequestDispatcher("/jsp/post/create.jsp").forward(req, resp);
         }else{
             resp.sendRedirect(context.getContextPath() + "/signin");
         }

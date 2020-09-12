@@ -25,7 +25,7 @@ public class EditServlet extends HttpServlet {
         if(parakeet.hasPermission(permission)){
             Post post = postDao.getById(id);
             req.setAttribute("post", post);
-            req.getRequestDispatcher("/jsp/edit.jsp");
+            req.getRequestDispatcher("/jsp/post/edit.jsp");
         }else{
             req.getRequestDispatcher("/jsp/unauthorized.jsp");
         }

@@ -3,10 +3,7 @@ package xyz.ioc.dao;
 import xyz.ioc.factory.DbFactory;
 import xyz.ioc.model.Post;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,7 +32,7 @@ public class PostDao {
         return null;
     }
 
-    public Post getLastInserted(){
+    public Post getLastSaved(){
         try {
             String sql = "select * from posts limit 1 order by date_created desc";
             Statement stmt = connection.createStatement();
@@ -75,7 +72,46 @@ public class PostDao {
         return null;
     }
 
-    public List<Post> getPosts(String username){
+    public boolean update(Post post){
+        try {
+            String sql = "update posts set title = ?, content = ? where id = " + post.getId();
+
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setString(2, post.getTitle());
+            stmt.setString(3, post.getContent());
+
+            int result = stmt.executeUpdate();
+            if(result == 1) {
+                return true;
+            }
+
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
+
+        return false;
+    }
+
+
+    public boolean delete(long id){
+        try {
+            String sql = "delete from posts where id = " + id;
+
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            int result = stmt.executeUpdate();
+
+            if(result == 1) {
+                return true;
+            }
+
+        }catch(SQLException ex){
+            ex.printStackTrace();
+        }
+
+        return false;
+    }
+
+    public List<Post> getList(){
         try {
             Statement stmt = connection.createStatement();
             String sql = "select * from posts";

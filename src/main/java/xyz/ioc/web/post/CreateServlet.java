@@ -19,7 +19,7 @@ public class CreateServlet extends HttpServlet {
         Parakeet parakeet = (Parakeet) context.getAttribute(Constants.PARAKEET_LOOKUP);
 
         if(parakeet.isAuthenticated()){
-            req.getRequestDispatcher("/jsp/create.jsp").forward(req, resp);
+            req.getRequestDispatcher("/jsp/post/create.jsp").forward(req, resp);
         }else{
             resp.sendRedirect(context.getContextPath() + "/signin");
         }
