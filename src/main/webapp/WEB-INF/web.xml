@@ -5,18 +5,18 @@
                              http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" version="3.1">
 
     <servlet>
-        <servlet-name>PostsServlet</servlet-name>
-        <servlet-class>xyz.ioc.web.PostsServlet</servlet-class>
+        <servlet-name>ListServlet</servlet-name>
+        <servlet-class>xyz.ioc.web.post.ListServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>PostsServlet</servlet-name>
+        <servlet-name>ListServlet</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
     <servlet>
         <servlet-name>CreateServlet</servlet-name>
-        <servlet-class>xyz.ioc.web.CreateServlet</servlet-class>
+        <servlet-class>xyz.ioc.web.post.CreateServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -26,13 +26,34 @@
 
     <servlet>
         <servlet-name>SaveServlet</servlet-name>
-        <servlet-class>xyz.ioc.web.SaveServlet</servlet-class>
+        <servlet-class>xyz.ioc.web.post.SaveServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
         <servlet-name>SaveServlet</servlet-name>
         <url-pattern>/save</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>EditServlet</servlet-name>
+        <servlet-class>xyz.ioc.web.post.EditServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>EditServlet</servlet-name>
+        <url-pattern>/edit</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>UpdateServlet</servlet-name>
+        <servlet-class>xyz.ioc.web.post.UpdateServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>UpdateServlet</servlet-name>
+        <url-pattern>/update</url-pattern>
+    </servlet-mapping>
+
 
     <servlet>
         <servlet-name>SigninServlet</servlet-name>

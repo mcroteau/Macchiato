@@ -1,7 +1,7 @@
-package xyz.ioc.web;
+package xyz.ioc.web.post;
 
 import io.github.mcroteau.Parakeet;
-import xyz.ioc.dao.PostsDao;
+import xyz.ioc.dao.PostDao;
 import xyz.ioc.model.Post;
 import xyz.ioc.ordinary.Constants;
 import xyz.ioc.ordinary.Utils;
@@ -15,9 +15,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-public class PostsServlet extends HttpServlet {
+public class ListServlet extends HttpServlet {
 
-    PostsDao postsDao;
+    PostDao postDao;
 
     @Override
     public void init(ServletConfig config) throws ServletException {
@@ -29,15 +29,15 @@ public class PostsServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ServletContext context = req.getServletContext();
         Parakeet parakeet = (Parakeet) context.getAttribute(Constants.PARAKEET_LOOKUP);
-        PostsDao postsDao = (PostsDao) context.getAttribute(Constants.POSTS_DAO_LOOKUP);
+        PostDao postDao = (PostDao) context.getAttribute(Constants.POSTS_DAO_LOOKUP);
 
         if(parakeet.isAuthenticated()) {
-            List<Post> posts = postsDao.getPosts(parakeet.getUser());
+            List<Post> posts = postDao.getPosts(parakeet.getUser());
             for (Post post : posts) {
                 post.setDate(Utils.getDate(post.getDateCreated()));
             }
             req.setAttribute("posts", posts);
         }
-        req.getRequestDispatcher("/jsp/posts.jsp").forward(req, resp);
+        req.getRequestDispatcher("/jsp/list.jsp").forward(req, resp);
     }
 }

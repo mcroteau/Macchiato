@@ -1,6 +1,8 @@
-package xyz.ioc.web;
+package xyz.ioc.web.post;
 
 import io.github.mcroteau.Parakeet;
+import xyz.ioc.dao.PostDao;
+import xyz.ioc.model.Post;
 import xyz.ioc.ordinary.Constants;
 
 import javax.servlet.ServletContext;
@@ -10,18 +12,22 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class SigninServlet extends HttpServlet {
+public class EditServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ServletContext context = req.getServletContext();
         Parakeet parakeet = (Parakeet) context.getAttribute(Constants.PARAKEET_LOOKUP);
+        PostDao postDao = (PostDao) context.getAttribute(Constants.POSTS_DAO_LOOKUP);
 
-        if(!parakeet.isAuthenticated()) {
-            req.getRequestDispatcher("/jsp/signin.jsp").forward(req, resp);
+        long id = Long.parseLong(req.getParameter("id"));
+        String permission = Constants.POST_PREFIX + id;
+        if(parakeet.hasPermission(permission)){
+            Post post = postDao.getById(id);
+            req.setAttribute("post", post);
+            req.getRequestDispatcher("/jsp/edit.jsp");
         }else{
-            resp.sendRedirect(req.getContextPath() + "/");
+            req.getRequestDispatcher("/jsp/unauthorized.jsp");
         }
     }
-
 }

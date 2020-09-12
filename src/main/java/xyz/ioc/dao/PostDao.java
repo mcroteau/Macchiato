@@ -10,11 +10,29 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PostsDao {
+public class PostDao {
     Connection connection;
 
-    public PostsDao(){
+    public PostDao(){
         connection = DbFactory.getConnection();
+    }
+
+
+    public Post getById(long id) {
+        try {
+            String sql = "select * from posts where id = " + id;
+            Statement stmt = connection.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+
+            if(rs.next()){
+                Post post = extractResultSetPost(rs);
+                return post;
+            }
+
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
+        return null;
     }
 
     public Post getLastInserted(){
@@ -31,7 +49,6 @@ public class PostsDao {
         }catch(Exception ex){
             ex.printStackTrace();
         }
-
         return null;
     }
 
@@ -77,7 +94,6 @@ public class PostsDao {
         }
         return null;
     }
-
 
     private Post extractResultSetPost(ResultSet rs) throws Exception{
         Post post = new Post();

@@ -2,7 +2,7 @@ package xyz.ioc.startup;
 
 import io.github.mcroteau.Parakeet;
 import org.h2.tools.RunScript;
-import xyz.ioc.dao.PostsDao;
+import xyz.ioc.dao.PostDao;
 import xyz.ioc.dao.UserDao;
 import xyz.ioc.factory.DbFactory;
 import xyz.ioc.factory.ParakeetFactory;
@@ -21,7 +21,7 @@ public class AppStartup implements ServletContextListener {
         try {
 
             System.out.println("Starting up!");
-            PostsDao postDao = new PostsDao();
+            PostDao postDao = new PostDao();
             UserDao userDao = new UserDao();
 
             ParakeetFactory parakeetFactory = new ParakeetFactory();

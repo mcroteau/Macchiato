@@ -3,8 +3,11 @@
     <decorator name="loggedin" page="loggedin.jsp">
         <pattern>*/create</pattern>
         <pattern>*/save</pattern>
-        <pattern>*/confirm</pattern>
+        <pattern>*/edit</pattern>
+        <pattern>*/update</pattern>
         <pattern>*/delete</pattern>
+        <!-- could start all servlets with prefix /post instead -->
+        <pattern>/post/*</pattern>
     </decorator>
     <decorator name="guest" page="guest.jsp">
         <pattern>*/</pattern>

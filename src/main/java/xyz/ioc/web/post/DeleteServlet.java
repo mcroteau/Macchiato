@@ -1,4 +1,4 @@
-package xyz.ioc.web;
+package xyz.ioc.web.post;
 
 import io.github.mcroteau.Parakeet;
 
@@ -23,7 +23,7 @@ public class DeleteServlet extends HttpServlet {
         super.doDelete(req, resp);
 
         if(parakeet.isAuthenticated()){
-            req.getRequestDispatcher("/jsp/blog/posts.jsp").forward(req, resp);
+            req.getRequestDispatcher("/jsp/blog/list.jsp").forward(req, resp);
         }else{
             req.setAttribute("message", "You must be signed in before continuing...");
             req.getRequestDispatcher("/jsp/signin.jsp");

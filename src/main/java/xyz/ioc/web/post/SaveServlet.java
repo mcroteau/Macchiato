@@ -1,7 +1,7 @@
-package xyz.ioc.web;
+package xyz.ioc.web.post;
 
 import io.github.mcroteau.Parakeet;
-import xyz.ioc.dao.PostsDao;
+import xyz.ioc.dao.PostDao;
 import xyz.ioc.dao.UserDao;
 import xyz.ioc.model.Post;
 import xyz.ioc.model.User;
@@ -21,7 +21,7 @@ public class SaveServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ServletContext context = req.getServletContext();
         Parakeet parakeet = (Parakeet) context.getAttribute(Constants.PARAKEET_LOOKUP);
-        PostsDao postsDao = (PostsDao) context.getAttribute(Constants.POSTS_DAO_LOOKUP);
+        PostDao postDao = (PostDao) context.getAttribute(Constants.POSTS_DAO_LOOKUP);
         UserDao userDao = (UserDao) context.getAttribute(Constants.USER_DAO_LOOKUP);
 
         if(parakeet.isAuthenticated()){
@@ -35,7 +35,7 @@ public class SaveServlet extends HttpServlet {
             post.setDateCreated(Utils.getDate());
             post.setUserId(user.getId());
 
-            Post savedPost = postsDao.save(post);
+            Post savedPost = postDao.save(post);
             String permission = Constants.POST_PREFIX + savedPost.getId();
             userDao.saveUserPermission(permission, user.getId());
 

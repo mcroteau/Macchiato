@@ -1,4 +1,4 @@
-package xyz.ioc.web;
+package xyz.ioc.web.post;
 
 import io.github.mcroteau.Parakeet;
 import xyz.ioc.ordinary.Constants;

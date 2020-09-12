@@ -1,0 +1,32 @@
+package xyz.ioc.web.post;
+
+import io.github.mcroteau.Parakeet;
+import xyz.ioc.dao.PostDao;
+import xyz.ioc.model.Post;
+import xyz.ioc.ordinary.Constants;
+
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
+public class UpdateServlet extends HttpServlet {
+
+    @Override
+    protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        ServletContext context = req.getServletContext();
+        Parakeet parakeet = (Parakeet) context.getAttribute(Constants.PARAKEET_LOOKUP);
+        PostDao postDao = (PostDao) context.getAttribute(Constants.POSTS_DAO_LOOKUP);
+
+        long id = Long.parseLong(req.getParameter("id"));
+        String permission = Constants.POST_PREFIX + id;
+        if(parakeet.hasPermission(permission)){
+            Post post = postDao.getById(id);
+            postDao.update(post);
+        }else{
+            req.getRequestDispatcher("/jsp/unauthorized.jsp");
+        }
+    }
+}
