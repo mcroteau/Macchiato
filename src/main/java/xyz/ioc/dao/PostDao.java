@@ -1,6 +1,6 @@
 package xyz.ioc.dao;
 
-import xyz.ioc.factory.DbFactory;
+import xyz.ioc.common.DbFactory;
 import xyz.ioc.model.Post;
 
 import java.sql.*;

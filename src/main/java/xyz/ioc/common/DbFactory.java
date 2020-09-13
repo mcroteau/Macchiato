@@ -1,6 +1,4 @@
-package xyz.ioc.factory;
-
-import xyz.ioc.ordinary.Constants;
+package xyz.ioc.common;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

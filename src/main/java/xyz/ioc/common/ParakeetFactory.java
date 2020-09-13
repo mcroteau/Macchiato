@@ -1,4 +1,4 @@
-package xyz.ioc.factory;
+package xyz.ioc.common;
 
 import io.github.mcroteau.Parakeet;
 import io.github.mcroteau.resources.access.Accessor;

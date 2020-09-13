@@ -1,4 +1,4 @@
-package xyz.ioc.ordinary;
+package xyz.ioc.common;
 
 public class Constants {
 

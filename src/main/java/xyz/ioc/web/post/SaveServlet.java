@@ -5,8 +5,8 @@ import xyz.ioc.dao.PostDao;
 import xyz.ioc.dao.UserDao;
 import xyz.ioc.model.Post;
 import xyz.ioc.model.User;
-import xyz.ioc.ordinary.Constants;
-import xyz.ioc.ordinary.Utils;
+import xyz.ioc.common.Constants;
+import xyz.ioc.common.Utils;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;

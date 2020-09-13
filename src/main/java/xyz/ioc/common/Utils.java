@@ -1,4 +1,4 @@
-package xyz.ioc.ordinary;
+package xyz.ioc.common;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

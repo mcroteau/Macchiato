@@ -1,9 +1,8 @@
 package xyz.ioc.web.post;
 
 import io.github.mcroteau.Parakeet;
-import xyz.ioc.ordinary.Constants;
+import xyz.ioc.common.Constants;
 
-import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

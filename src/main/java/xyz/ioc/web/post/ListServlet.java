@@ -3,8 +3,8 @@ package xyz.ioc.web.post;
 import io.github.mcroteau.Parakeet;
 import xyz.ioc.dao.PostDao;
 import xyz.ioc.model.Post;
-import xyz.ioc.ordinary.Constants;
-import xyz.ioc.ordinary.Utils;
+import xyz.ioc.common.Constants;
+import xyz.ioc.common.Utils;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;

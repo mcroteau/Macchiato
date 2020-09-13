@@ -4,9 +4,9 @@ import io.github.mcroteau.Parakeet;
 import org.h2.tools.RunScript;
 import xyz.ioc.dao.PostDao;
 import xyz.ioc.dao.UserDao;
-import xyz.ioc.factory.DbFactory;
-import xyz.ioc.factory.ParakeetFactory;
-import xyz.ioc.ordinary.Constants;
+import xyz.ioc.common.DbFactory;
+import xyz.ioc.common.ParakeetFactory;
+import xyz.ioc.common.Constants;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;

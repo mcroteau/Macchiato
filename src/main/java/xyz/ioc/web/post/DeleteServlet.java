@@ -2,17 +2,14 @@ package xyz.ioc.web.post;
 
 import io.github.mcroteau.Parakeet;
 import xyz.ioc.dao.PostDao;
-import xyz.ioc.model.Post;
-import xyz.ioc.ordinary.Constants;
+import xyz.ioc.common.Constants;
 
-import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
 
 public class DeleteServlet extends HttpServlet {
 
