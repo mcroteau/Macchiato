@@ -50,15 +50,16 @@ public class UserDao {
         }catch(Exception e){
             e.printStackTrace();
         }
-        return null;
+        return "";
     }
 
     public Set<String> getUserRoles(String username){
         try {
             User user = getUser(username);
             Statement stmt = connection.createStatement();
-            ResultSet rs = stmt.executeQuery("select r.name from account_roles ur, role r where ur.role_id = r.id and ur.account_id = " + user.getId());
-            Set roles = new HashSet();
+            ResultSet rs = stmt.executeQuery("select r.name from user_roles ur, roles r where ur.role_id = r.id and ur.account_id = " + user.getId());
+           
+            Set<String> roles = new HashSet<String>();
             while(rs.next()){
                 String role = rs.getString("name");
                 roles.add(role);
@@ -74,8 +75,8 @@ public class UserDao {
         try {
             User user = getUser(username);
             Statement stmt = connection.createStatement();
-            ResultSet rs = stmt.executeQuery("select permission from account_permissions where account_id = " + user.getId());
-            Set permissions = new HashSet();
+            ResultSet rs = stmt.executeQuery("select permission from user_permissions where account_id = " + user.getId());
+            Set<String> permissions = new HashSet<String>();
             while(rs.next()){
                 String permission = rs.getString("permission");
                 permissions.add(permission);

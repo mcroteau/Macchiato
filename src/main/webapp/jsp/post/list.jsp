@@ -16,9 +16,13 @@
                 <div class="post-container">
                     <h2>${post.title}</h2>
                     <span class="tiny">${post.date}</span>
-                    <div>${post.content}</div>
+                    <div>${post.content}
+                        <a href="${pageContext.request.contextPath}/edit?id=${post.id}">Edit</a>
+                    </div>
+
                 </div>
             </c:forEach>
+
         </div>
     </c:if>
     <c:if test="${posts == null || posts.size() == 0}">

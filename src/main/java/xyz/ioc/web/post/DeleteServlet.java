@@ -17,21 +17,21 @@ import java.util.List;
 public class DeleteServlet extends HttpServlet {
 
     @Override
-    protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ServletContext context = req.getServletContext();
         Parakeet parakeet = (Parakeet) context.getAttribute(Constants.PARAKEET_LOOKUP);
         PostDao postDao = (PostDao) context.getAttribute(Constants.POSTS_DAO_LOOKUP);
 
         if(parakeet.isAuthenticated() &&
-                parakeet.hasRole(Constants.ROLE_ADMIN)){
+                parakeet.hasRole(Constants.ROLE_OWNER)){
 
             long id = Long.parseLong(req.getParameter("id"));
             postDao.delete(id);
             resp.sendRedirect(context.getContextPath() + "/");
 
         }else{
-            req.setAttribute("message", "You must be signed in before continuing...");
-            req.getRequestDispatcher("/jsp/signin.jsp");
+            req.setAttribute("message", "You don't have privileges to do this...");
+            req.getRequestDispatcher("/jsp/unauthorized.jsp").forward(req, resp);
         }
     }
 }

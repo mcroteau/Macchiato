@@ -13,7 +13,7 @@ public class Constants {
     public static final String POSTS_DAO_LOOKUP = "PostsDao";
     public static final String DATE_FORMAT  = "yyyyMMddHHmmssSSS";
 
-    public static final String ROLE_ADMIN  = "ROLE_ADMIN";
+    public static final String ROLE_OWNER  = "ROLE_OWNER";
     public static final String POST_PREFIX = "post:maintenance:";
 
 }

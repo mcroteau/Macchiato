@@ -4,7 +4,7 @@
 
 <html>
 <head>
-    <title>Macchiato : The only blog to visit.</title>
+    <title>Macchiato : The only blog to adore.</title>
     <decorator:head />
 </head>
 <body>

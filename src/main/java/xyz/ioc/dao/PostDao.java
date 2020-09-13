@@ -32,9 +32,9 @@ public class PostDao {
         return null;
     }
 
-    public Post getLastSaved(){
+    public Post getLast(){
         try {
-            String sql = "select * from posts limit 1 order by date_created desc";
+            String sql = "select * from posts order by date_created desc limit 1 ";
             Statement stmt = connection.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
 
@@ -61,7 +61,7 @@ public class PostDao {
 
             int result = stmt.executeUpdate();
             if(result == 1) {
-                Post savedPost = getLastInserted();
+                Post savedPost = getLast();
                 return savedPost;
             }
 
@@ -77,8 +77,8 @@ public class PostDao {
             String sql = "update posts set title = ?, content = ? where id = " + post.getId();
 
             PreparedStatement stmt = connection.prepareStatement(sql);
-            stmt.setString(2, post.getTitle());
-            stmt.setString(3, post.getContent());
+            stmt.setString(1, post.getTitle());
+            stmt.setString(2, post.getContent());
 
             int result = stmt.executeUpdate();
             if(result == 1) {

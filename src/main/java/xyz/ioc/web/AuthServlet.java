@@ -25,7 +25,7 @@ public class AuthServlet extends HttpServlet {
             resp.sendRedirect(req.getContextPath() + "/");
         }else{
             req.setAttribute("message", "Username and password are incorrect! Please try again!");
-            req.getRequestDispatcher("/jsp/signin.jsp");
+            req.getRequestDispatcher("/jsp/signin.jsp").forward(req, resp);
         }
 
     }

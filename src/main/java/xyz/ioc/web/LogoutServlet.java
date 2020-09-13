@@ -16,12 +16,11 @@ public class LogoutServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doGet(req, resp);
         ServletContext context = req.getServletContext();
         Parakeet parakeet = (Parakeet) context.getAttribute(Constants.PARAKEET_LOOKUP);
         parakeet.logout();
 
-        resp.sendRedirect(req.getContextPath() + "/posts");
+        resp.sendRedirect(req.getContextPath() + "/");
     }
 
 }

@@ -3,17 +3,17 @@
 
 <html>
 <head>
-    <title>Macchiato : Update Post</title>
+    <title>Macchiato : Edit Post</title>
 </head>
 <body>
-<h1>Update Post</h1>
+<h1>Edit Post</h1>
 
 <c:if test="${not empty message}">
     <p><c:out value="${message}"/></p>
 </c:if>
 
 <form action="${pageContext.request.contextPath}/update" method="post">
-    <input type="hidden" value="${post.id}"/>
+    <input type="hidden" name="id" value="${post.id}"/>
 
     <label>Title</label>
     <input type="text" name="title" placeholder="title" value="${post.title}"/>
@@ -26,13 +26,13 @@
     <br/>
     <br/>
 
-    <input type="submit" value="Save"/>
+    <input type="submit" value="update"/>
 </form>
 
 
-<form action="" action="put">
-    <input type="hidden" value="${post.id}"/>
-    <input type="button" value="Delete"/>
+<form action="${pageContext.request.contextPath}/delete" method="post">
+    <input type="hidden" name="id" value="${post.id}"/>
+    <input type="submit" value="Delete"/>
 </form>
 
 

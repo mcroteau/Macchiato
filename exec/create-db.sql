@@ -10,12 +10,12 @@ create table roles (
 	name character varying(55) NOT NULL UNIQUE
 );
 
-create table account_roles (
+create table user_roles (
 	role_id bigint NOT NULL REFERENCES roles(id),
 	account_id bigint NOT NULL REFERENCES accounts(id)
 );
 
-create table account_permissions (
+create table user_permissions (
 	account_id bigint REFERENCES accounts(id),
 	permission character varying(55)
 );
@@ -34,6 +34,6 @@ insert into accounts values (2, 'barista', 'barista@mail.co', '5e884898da2804715
 insert into roles values (1, 'ROLE_OWNER');
 insert into roles values (2, 'ROLE_BARISTA');
 
-insert into account_roles values (1, 1);
-insert into account_roles values (2, 2);
+insert into user_roles values (1, 1);
+insert into user_roles values (2, 2);
 

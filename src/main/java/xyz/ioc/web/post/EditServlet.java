@@ -22,12 +22,13 @@ public class EditServlet extends HttpServlet {
 
         long id = Long.parseLong(req.getParameter("id"));
         String permission = Constants.POST_PREFIX + id;
-        if(parakeet.hasPermission(permission)){
+        if(parakeet.hasPermission(permission) ||
+            parakeet.hasRole(Constants.ROLE_OWNER)){
             Post post = postDao.getById(id);
             req.setAttribute("post", post);
-            req.getRequestDispatcher("/jsp/post/edit.jsp");
+            req.getRequestDispatcher("/jsp/post/edit.jsp").forward(req, resp);
         }else{
-            req.getRequestDispatcher("/jsp/unauthorized.jsp");
+            req.getRequestDispatcher("/jsp/unauthorized.jsp").forward(req, resp);
         }
     }
 }
