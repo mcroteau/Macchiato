@@ -58,7 +58,7 @@ public class UserDao {
             User user = getUser(username);
             Statement stmt = connection.createStatement();
             ResultSet rs = stmt.executeQuery("select r.name from user_roles ur, roles r where ur.role_id = r.id and ur.account_id = " + user.getId());
-           
+
             Set<String> roles = new HashSet<String>();
             while(rs.next()){
                 String role = rs.getString("name");
